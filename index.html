@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .animated {
+        animation: move 0.5s;
+      }
+      @keyframes move {
+        from {
+          transform: translateX(150px);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+    </div>
+    <div>
+      <img
+        id="app"
+        width="300"
+        src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595572196314&di=761d267113ed254c0bbc2e01dc5cb127&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fd6a3789c8b9f271fb4a179dd42a9473f2b5ce49a7f32-JgDwcQ_fw658"
+      />
+    </div>
+    <button onclick="add()">btn</button>
+    <div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+      <div>112333333</div>
+    </div>
+    <script>
+      let app = document.getElementById("app");
+      console.log(
+        "元素到可视区顶部的距离 + 滚动条卷去的距离 = app到页面顶部的距离"
+      );
+      console.log(app.getBoundingClientRect().top, scrollY, app.offsetTop);
+      document.addEventListener("scroll", () => {
+        console.log(app.getBoundingClientRect().top, app.offsetTop, scrollY);
+        if (app.offsetTop < scrollY + (window.innerHeight * 2) / 3) {
+          app.className = "animated";
+        }
+      });
+    </script>
+  </body>
+</html>
