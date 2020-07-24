@@ -68,15 +68,3 @@ router.beforeEach(async (to, from, next) => {
 router.afterEach(() => {
   NProgress.done();
 });
-/**
- * vuex ： user 、permission
- * --------------------------
- * 登录：登录获取token；
- * 跳转：根据token触发user的action获取roles，再根据roles通过触发permission的action获取权限路由
- * --------------------------
- * 展示：展示hidden为false的项
- * --------------------------
- * XHR：
- *    生产环境
- *    开发环境 - 通过webpack-devServer-before -> Mock;
- */
