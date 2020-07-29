@@ -1,4 +1,4 @@
-# 去
+# Vue开发
 
 - vuex ： user 、permission
 -------------------------
@@ -13,3 +13,7 @@
 
 ### Mock：
   使用Chokidar.js，对mock下的文件进行监控，当文件发生变化的时候，重新构建routes
+
+### Optimization
+- externals - CDN
+- Element-UI 按需加载
