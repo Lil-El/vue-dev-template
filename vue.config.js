@@ -1,6 +1,7 @@
 "use strict";
 const path = require("path");
 const defaultSettings = require("./src/settings.js");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -25,9 +26,7 @@ module.exports = {
     before: require("./mock/mock-server.js")
   },
   configureWebpack: {
-    // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
-    name: name,
+    name: name, // 注入到index.html的title上
     resolve: {
       alias: {
         "@": resolve("src")
@@ -47,24 +46,28 @@ module.exports = {
     // 页面太多，会进行没必要的请求
     config.plugins.delete("prefetch");
 
-    // set svg-sprite-loader
-    config.module
-      .rule("svg")
-      .exclude.add(resolve("src/icons"))
-      .end();
-    config.module
-      .rule("icons")
-      .test(/\.svg$/)
-      .include.add(resolve("src/icons"))
-      .end()
-      .use("svg-sprite-loader")
-      .loader("svg-sprite-loader")
-      .options({
-        symbolId: "icon-[name]"
-      })
-      .end();
+    // config.module
+    //   .rule("svg")
+    //   .exclude.add(resolve("src/icons"))
+    //   .end();
+    // config.module
+    //   .rule("icons")
+    //   .test(/\.svg$/)
+    //   .include.add(resolve("src/icons"))
+    //   .end()
+    //   .use("svg-sprite-loader")
+    //   .loader("svg-sprite-loader")
+    //   .options({
+    //     symbolId: "icon-[name]"
+    //   })
+    //   .end();
+    config.set("externals", {
+      swiper: "Swiper"
+    });
 
     config.when(process.env.NODE_ENV !== "development", config => {
+      // config.plugin("analyzer").use(new BundleAnalyzerPlugin());
+
       config
         .plugin("ScriptExtHtmlWebpackPlugin")
         .after("html")
@@ -75,6 +78,7 @@ module.exports = {
           }
         ])
         .end();
+
       config.optimization.splitChunks({
         chunks: "all",
         cacheGroups: {
@@ -85,14 +89,19 @@ module.exports = {
             chunks: "initial" // only package third parties that are initially dependent
           },
           elementUI: {
-            name: "chunk-elementUI", // split elementUI into a single package
-            priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
-            test: /[\\/]node_modules[\\/]_?element-ui(.*)/ // in order to adapt to cnpm
+            name: "chunk-elementUI",
+            priority: 20, // 权重必须大于libs和app，否则将打包到libs或app中
+            test: /[\\/]node_modules[\\/]_?element-ui(.*)/
+          },
+          mock: {
+            name: "chunk-mock",
+            priority: 15,
+            test: /[\\/]node_modules[\\/]mockjs/
           },
           commons: {
             name: "chunk-commons",
-            test: resolve("src/components"), // can customize your rules
-            minChunks: 3, //  minimum common number
+            test: resolve("src/components"),
+            minChunks: 3,
             priority: 5,
             reuseExistingChunk: true
           }
