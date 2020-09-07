@@ -17,3 +17,8 @@
 ### Optimization
 - externals - CDN
 - Element-UI 按需加载
+
+# Q:
+### /static 和 /src/assets 区别
+- static用于存放静态资源文件、第三方资源文件；通过绝对路径来引用，webpack会对该文件夹打包，会直接复制该文件夹
+- assets存放图片、字体图标、logo等文件；相对路径，会被打包
