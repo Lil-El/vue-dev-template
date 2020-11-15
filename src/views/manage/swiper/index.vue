@@ -6,7 +6,7 @@
       </div>
       <el-carousel :interval="3000" type="card" :loop="false">
         <el-carousel-item v-for="img in imgList" :key="img">
-          <img :src="img" />
+          <img :src="img">
         </el-carousel-item>
       </el-carousel>
     </el-card>
@@ -20,33 +20,32 @@
   </div>
 </template>
 <script>
-import Carousel from "@/components/Carousel";
-import Swiper from "swiper";
-import SwiperTable from "./components/swiperTable";
-import "swiper/css/swiper.css";
+import Swiper from 'swiper'
+import SwiperTable from './components/swiperTable'
+import 'swiper/css/swiper.css'
 export default {
-  components: { Carousel, SwiperTable },
+  components: { SwiperTable },
   data() {
     this.opts = {
       slidesPerView: 3,
       spaceBetween: 30,
       centeredSlides: true,
       pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    };
+        el: '.swiper-pagination',
+        clickable: true
+      }
+    }
     return {
       imgList: [
-        "https://www.supermap.com/cn/pic/toppic/20205291440151920.jpg",
-        "https://www.supermap.com/cn/pic/toppic/202031117946132283854518993921.jpg",
-        "https://www.supermap.com/cn/pic/toppic/20203414314pp1.jpg",
-        "https://www.supermap.com/cn/images/20190821pc.jpg",
-      ],
-    };
+        'https://www.supermap.com/cn/pic/toppic/20205291440151920.jpg',
+        'https://www.supermap.com/cn/pic/toppic/202031117946132283854518993921.jpg',
+        'https://www.supermap.com/cn/pic/toppic/20203414314pp1.jpg',
+        'https://www.supermap.com/cn/images/20190821pc.jpg'
+      ]
+    }
   },
-  mounted() {},
-};
+  mounted() {}
+}
 </script>
 <style lang="scss" scoped>
 .el-carousel__item {
