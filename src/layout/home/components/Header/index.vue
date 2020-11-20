@@ -15,10 +15,7 @@
           <template slot="title">部门简介</template>
           <el-menu-item index="2-1">选项1</el-menu-item>
         </el-submenu>
-        <el-menu-item index="Scheme">产品&方案</el-menu-item>
-        <el-menu-item index="Demo">产品演示</el-menu-item>
-        <el-menu-item index="News">资讯&分享</el-menu-item>
-        <el-menu-item index="Contact">联系我们</el-menu-item>
+        <el-menu-item index="Scheme">page</el-menu-item>
       </el-menu>
     </div>
     <div class="profile">
@@ -33,15 +30,13 @@
 import Avart from "@/components/Avart";
 import { getToken } from "@/utils/auth";
 export default {
-  components: {
-    Avart,
-  },
+  components: { Avart },
   data() {
     return { hasLogin: false };
   },
   created() {
     this.hasLogin = getToken() || false;
-    console.log(this.hasLogin);
+    console.log("hasLogin:", this.hasLogin);
   },
   methods: {
     handleMenu(name) {
