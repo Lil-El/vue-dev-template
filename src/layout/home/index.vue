@@ -7,24 +7,15 @@
       <main>
         <router-view></router-view>
       </main>
-      <footer>
-        <Footer />
-      </footer>
     </div>
   </div>
 </template>
 <script>
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 export default {
   components: {
     Header,
-    Footer,
   },
-  data() {
-    return {};
-  },
-  created() {},
 };
 </script>
 <style lang="scss" scoped>
